@@ -1,10 +1,11 @@
 # jenkins-docker-slaves
 
 This project refers to "https://github.com/knjname/jenkins-docker-example".
-   blog entry http://knjname.hateblo.jp/entry/2014/05/03/190842 (In Japanese).
 
-I had to struggle to work well. Because this omits permission settings to have
-ssh work well. I hope this would help someone.
+The blog entry is http://knjname.hateblo.jp/entry/2014/05/03/190842 (In Japanese).
+
+I had to struggle to work it well. Because this omits permission settings to have
+master connect to slave via ssh. I hope this would help someone.
 
 # Jenkins over Docker example
 
