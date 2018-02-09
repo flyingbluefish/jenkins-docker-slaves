@@ -83,15 +83,16 @@ via Jenkins administration menu.
 
 ## Directories
 
-  Docker image contains directoris to mount external directory to save data. See dockerrun.sh (both master and slave)
+  Docker image contains directories to mount external directory to save data permanently. 
+  See dockerrun.sh (both master and slave) to specify external directory.
 
 ### Master directories
 
 ```
-/root/.ssh ssh key
+/root/.ssh ssh key (intrinsic)
 /var/log/jenkins log directory
 /var/lib/jenkins workspace directory
-/usr/lib/jenkins 
+/usr/lib/jenkins (intrinsic)
 ```
 jenkins works with root permission as root. 
 
@@ -99,7 +100,7 @@ jenkins works with root permission as root.
 ### Slave directories
 
 ```
-/home/jenkins is home directory to keep .ssh directory.
+/home/jenkins is home directory to keep .ssh directory. (intrinsic)
 /var/lib/jenkins is mount point of workspace.
 ```
 
