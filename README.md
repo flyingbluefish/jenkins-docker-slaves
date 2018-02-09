@@ -44,12 +44,12 @@ Modify dockerrun.sh to setup directories.
 Access to http://`address`:8880/ to execute jenkins.
 
 
-## setup plugin
+### setup plugin
 
   ssh-agent plugin is required
   ssh-credentials plugin is required.
   
-## setup credential
+### setup credential
 
   To setup credential, register authentication information on jenkins.
   Use root's .ssh directory.
@@ -81,6 +81,10 @@ via Jenkins administration menu.
 - via ssh and specify port(11022) to connect to slave.
 
 
+## Directoris
+
+  Docker image contains directoris to mount external directory to save data. See dockerrun.sh (both master and slave)
+
 ### Master directories
 
 ```
@@ -90,6 +94,7 @@ via Jenkins administration menu.
 /usr/lib/jenkins 
 ```
 jenkins works with root permission as root. 
+
 
 ### Slave directories
 
