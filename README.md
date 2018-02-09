@@ -1,5 +1,20 @@
 # jenkins-docker-slaves
 
+This project aims to provide boilerplate and simple example in order to build up jenkins master-slaves cluster. 
+
+## Jenkins over Docker example
+
+This project contains various files such as Dockerfile or related files, 
+which forms a practical Jenkins master-slave configuration over Docker.
+
+## ssh settings
+
+In order to work cluster well, ssh settings is important. ssh setting is difficult to understand and setup correctly.
+These Dockerfiles contains several commands to setup ssh and sshd.
+
+
+## Background
+
 This project refers to "https://github.com/knjname/jenkins-docker-example".
 
 The blog entry is http://knjname.hateblo.jp/entry/2014/05/03/190842 (In Japanese).
@@ -7,10 +22,6 @@ The blog entry is http://knjname.hateblo.jp/entry/2014/05/03/190842 (In Japanese
 I had to struggle to work it well. Because this omits permission settings to have
 master connect to slave via ssh. I hope this would help someone.
 
-# Jenkins over Docker example
-
-This project contains various files such as Dockerfile or related files, 
-which forms a practical Jenkins master-slave configuration over Docker.
 
 
 ## To build Jenkins master node
@@ -54,6 +65,37 @@ To connect between the master and the slave, you have to configure it manually
 via Jenkins administration menu.
 
 - via ssh and specify port(11022) to connect to slave.
+
+
+### Master directories
+
+```
+/root/.ssh ssh key
+/var/log/jenkins log directory
+/var/lib/jenkins workspace directory
+/usr/lib/jenkins 
+```
+jenkins works with root permission as root. 
+
+### Slave directories
+
+```
+/home/jenkins is home directory to keep .ssh directory.
+/var/lib/jenkins is mount point of workspace.
+```
+
+So at the beginning of job script, you had better changing directory to /var/lib/jenkins/workspace directly.
+Don't use $HOME/workspace.
+
+
+
+
+
+
+
+
+
+
 
 
 
