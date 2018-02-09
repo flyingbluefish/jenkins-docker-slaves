@@ -81,7 +81,7 @@ via Jenkins administration menu.
 - via ssh and specify port(11022) to connect to slave.
 
 
-## Directoris
+## Directories
 
   Docker image contains directoris to mount external directory to save data. See dockerrun.sh (both master and slave)
 
