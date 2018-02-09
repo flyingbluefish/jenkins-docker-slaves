@@ -44,6 +44,20 @@ Modify dockerrun.sh to setup directories.
 Access to http://`address`:8880/ to execute jenkins.
 
 
+## setup plugin
+
+  ssh-agent plugin is required
+  ssh-credentials plugin is required.
+  
+## setup credential
+
+  To setup credential, register authentication information on jenkins.
+  Use root's .ssh directory.
+  
+## add slave
+
+  Add slave node with using ssh-credential.
+
 ## To build Jenkins slave node
 
 ```
