@@ -1,0 +1,12 @@
+When stopping:
+  docker commit 8cf95497589a a; docker run --rm -it a /bin/bash
+
+When wanting to know address:
+  docker inspect --format '{{ .NetworkSettings.IPAddress }}' 59
+
+When looking into image:
+  docker exec -it 59 bash
+
+
+
+
