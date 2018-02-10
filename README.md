@@ -12,6 +12,7 @@ which forms a practical Jenkins master-slave configuration over Docker.
 In order to work cluster well, ssh settings is important. ssh setting is difficult to understand and setup correctly.
 These Dockerfiles contains several commands to setup ssh and sshd.
 
+the stored key passphrase is "jenkins" in double quotes.
 
 ## Background
 
