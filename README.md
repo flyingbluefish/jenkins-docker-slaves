@@ -7,12 +7,17 @@ This project aims to provide boilerplate and simple example in order to build up
 This project contains various files such as Dockerfile or related files, 
 which forms a practical Jenkins master-slave configuration over Docker.
 
-## ssh settings
+## Support slaves
 
-In order to work cluster well, ssh settings is important. ssh setting is difficult to understand and setup correctly.
-These Dockerfiles contains several commands to setup ssh and sshd.
+There are a few mechanisms to support slave.
 
-the stored key passphrase is "jenkins" in double quotes.
+- ssh-slave
+  jenkins server connects to slave via ssh. jenkins server should know the ip address of slave and have ssh public key of slave.
+  
+- jnlp-slave
+  jnlp agent.jar connects to server. jnlp slave should know the URL of jenkins server jnlp and secret.
+  This implementation does not require secret.
+
 
 ## Background
 
@@ -47,25 +52,36 @@ Access to http://`address`:8880/ to execute jenkins.
 
 ### setup plugin
 
-  ssh slave plugin is required
-  
-### setup credential
+  ssh slave plugin is required.
+  Add the plugin through administration GUI menu 
 
-  To setup credential, register authentication information on jenkins.
-  Use root's .ssh directory.
-  
-## add slave
 
-  Add slave node with using ssh-credential.
 
 ## To build Jenkins slave node (ssh)
 
 ```
 #> cd ssh-slave
 #> make
-(An image ci/slave will be registered.)
+(An image ci/ssh-slave will be registered.)
 ```
 
+### ssh settings
+
+In order to work cluster well, ssh settings is important. ssh setting is difficult to understand and setup correctly.
+These Dockerfiles contains several commands to setup ssh and sshd.
+
+the stored key passphrase is "jenkins" in double quotes.
+
+### setup credential
+
+  To setup credential, register authentication information on jenkins.
+  Use root's .ssh directory.
+  
+### add slave using ssh agent
+
+  Add slave node with using ssh-credential from GUI menu as ssh slave node.
+  
+  
 ### And to run
 
 ```
@@ -79,6 +95,33 @@ To connect between the master and the slave, you have to configure it manually
 via Jenkins administration menu.
 
 - via ssh and specify port(11022) to connect to slave.
+
+
+## To build Jenkins slave node (jnlp)
+
+
+```
+#> cd jnlp-slave
+#> make
+(An image ci/jnlp-slave will be registered.)
+```
+
+### Add jnlp slave
+
+ Add slave node from GUI menu as jnlp slave node.
+
+ You can get URL to invoke agent of slave side after defining node on administration menu. 
+ Same as the URL, set URL variable in dockerrun.sh. 
+
+
+### And to run
+
+```
+#> cd ssh-slave
+#> bash dockerrun.sh
+```
+
+
 
 
 ## Directories
