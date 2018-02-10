@@ -12,9 +12,11 @@ which forms a practical Jenkins master-slave configuration over Docker.
 There are a few mechanisms to support slave.
 
 - ssh-slave
+
   jenkins server connects to slave via ssh. jenkins server should know the ip address of slave and have ssh public key of slave.
   
 - jnlp-slave
+
   jnlp agent.jar connects to server. jnlp slave should know the URL of jenkins server jnlp and secret.
   This implementation does not require secret.
 
