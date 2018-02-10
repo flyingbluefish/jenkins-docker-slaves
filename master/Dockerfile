@@ -9,9 +9,7 @@ RUN apt-get install -y sudo unzip curl
 RUN echo 'root:root' | chpasswd
 
 # Install Jenkins
-RUN mkdir -p /var/log/jenkins
-RUN mkdir -p /var/lib/jenkins
-RUN mkdir -p /usr/bin/jenkins
+RUN mkdir -p /var/log/jenkins /var/lib/jenkins /usr/bin/jenkins
 
 RUN groupadd -g 1000 jenkins
 RUN useradd jenkins -d /var/lib/jenkins -u 1000 -g 1000 -s /bin/bash
@@ -30,7 +28,6 @@ RUN chmod 0700 /var/lib/jenkins/
 RUN chmod 0600 /var/lib/jenkins/.ssh/id_rsa
 RUN chmod 0644 /var/lib/jenkins/.ssh/id_rsa.pub
 RUN chmod 0700 /var/lib/jenkins/.ssh
-
 
 ADD resources/runner.sh /usr/bin/jenkins/run.sh
 
