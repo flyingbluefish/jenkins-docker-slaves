@@ -1,5 +1,8 @@
 FROM ubuntu
 
+ENV JENKINS_UID=1000
+ENV JENKINS_GID=1000
+
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y openssh-client
@@ -11,8 +14,8 @@ RUN echo 'root:root' | chpasswd
 # Install Jenkins
 RUN mkdir -p /var/log/jenkins /var/lib/jenkins /usr/bin/jenkins
 
-RUN groupadd -g 1000 jenkins
-RUN useradd jenkins -d /var/lib/jenkins -u 1000 -g 1000 -s /bin/bash
+RUN groupadd -g $JENKINS_GID jenkins
+RUN useradd jenkins -d /var/lib/jenkins -u $JENKINS_UID -g $JENKINS_GID -s /bin/bash
 RUN echo 'jenkins:jenkins' | chpasswd
 
 # Install SSH configuration

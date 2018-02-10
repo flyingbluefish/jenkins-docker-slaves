@@ -1,5 +1,10 @@
 FROM ubuntu
 
+ENV JENKINS_UID=1000
+ENV JENKINS_GID=1000
+ENV JENKINS_HOME=/home/jenkins
+ENV REMOTE_FSROOT=/var/lib/jenkins
+
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y rsyslog
@@ -30,17 +35,18 @@ RUN sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
 
 #EXPOSE 22
 
-RUN groupadd -g 1000 jenkins
-RUN useradd jenkins -d /home/jenkins -u 1000 -g 1000 -s /bin/bash
+RUN groupadd -g $JENKINS_GID jenkins
+RUN useradd jenkins -d $JENKINS_HOME -u $JENKINS_UID -g $JENKINS_GID -s /bin/bash
+
 RUN echo 'jenkins:jenkins' | chpasswd
-RUN mkdir -p /home/jenkins
-RUN chmod -R a+w /home/jenkins
-RUN chown -R jenkins:jenkins /home/jenkins
+RUN mkdir -p $JENKINS_HOME
+RUN chmod -R a+w $JENKINS_HOME
+RUN chown -R jenkins:jenkins $JENKINS_HOME
 
 # for workspace 
 # -v option in dockerrun.sh have this location attached to external directory.
-RUN mkdir -p /var/lib/jenkins
-
+RUN mkdir -p $REMOTE_FSROOT
+RUN chmod a+rw $REMOTE_FSROOT
 
 # Install SSH configuration
 # (Should allow master's SSH request.)
@@ -51,15 +57,15 @@ RUN chmod 0644 /root/.ssh/id_rsa.pub
 RUN chmod 0600 /root/.ssh/authorized_keys
 RUN chmod 0700 /root/.ssh
 
-ADD ssh-files /home/jenkins/.ssh
-RUN chown -R jenkins:jenkins /home/jenkins/.ssh
-RUN chmod 0700 /home/jenkins
-RUN chmod 0600 /home/jenkins/.ssh/id_rsa
-RUN chmod 0600 /home/jenkins/.ssh/authorized_keys
-RUN chmod 0644 /home/jenkins/.ssh/id_rsa.pub
-RUN chmod 0700 /home/jenkins/.ssh
+ADD ssh-files $JENKINS_HOME/.ssh
+RUN chown -R jenkins:jenkins $JENKINS_HOME/.ssh
+RUN chmod 0700 $JENKINS_HOME
+RUN chmod 0600 $JENKINS_HOME/.ssh/id_rsa
+RUN chmod 0600 $JENKINS_HOME/.ssh/authorized_keys
+RUN chmod 0644 $JENKINS_HOME/.ssh/id_rsa.pub
+RUN chmod 0700 $JENKINS_HOME/.ssh
 
-# RUN chown -R jenkins:jenkins /home/jenkins
+# RUN chown -R jenkins:jenkins $JENKINS_HOME
 # RUN usermod -G wheel jenkins
 
 CMD    /usr/sbin/rsyslogd
