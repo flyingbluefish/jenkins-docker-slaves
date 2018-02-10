@@ -7,6 +7,8 @@ MASTERPORT=8880
 mkdir -p $LOGDIR
 mkdir -p $HOMEDIR
 
+echo "jenkins port is $MASTERPORT"
+
 docker run \
     --name "ci-master" \
     -p $MASTERPORT:8080 \

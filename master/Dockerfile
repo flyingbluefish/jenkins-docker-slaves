@@ -3,7 +3,7 @@ FROM ubuntu
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y openssh-client
-RUN apt-get install -y rsyslogd
+RUN apt-get install -y rsyslog
 RUN apt-get install -y sudo unzip curl
 
 RUN echo 'root:root' | chpasswd
@@ -18,13 +18,13 @@ RUN useradd jenkins -d /var/lib/jenkins -u 1000 -g 1000 -s /bin/bash
 RUN echo 'jenkins:jenkins' | chpasswd
 
 # Install SSH configuration
-ADD ssh-files /root/.ssh
+ADD resources/ssh-files /root/.ssh
 RUN chmod 0700 /root
 RUN chmod 0600 /root/.ssh/id_rsa
 RUN chmod 0644 /root/.ssh/id_rsa.pub
 RUN chmod 0700 /root/.ssh
 
-ADD ssh-files /var/lib/jenkins/.ssh
+ADD resources/ssh-files /var/lib/jenkins/.ssh
 RUN chown -R jenkins:jenkins /var/lib/jenkins/.ssh
 RUN chmod 0700 /var/lib/jenkins/
 RUN chmod 0600 /var/lib/jenkins/.ssh/id_rsa

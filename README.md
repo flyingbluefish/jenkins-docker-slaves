@@ -46,8 +46,7 @@ Access to http://`address`:8880/ to execute jenkins.
 
 ### setup plugin
 
-  ssh-agent plugin is required
-  ssh-credentials plugin is required.
+  ssh slave plugin is required
   
 ### setup credential
 
