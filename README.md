@@ -23,7 +23,7 @@ There are a few mechanisms to support slave.
 
 ## Background
 
-This project refers to "https://github.com/knjname/jenkins-docker-example".
+This project forked from "https://github.com/knjname/jenkins-docker-example".
 
 The blog entry is http://knjname.hateblo.jp/entry/2014/05/03/190842 (In Japanese).
 
