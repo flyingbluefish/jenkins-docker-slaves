@@ -7,7 +7,7 @@ This project aims to provide boilerplate and simple example in order to build up
 This project contains various files such as Dockerfile or related files, 
 which forms a practical Jenkins master-slave configuration over Docker.
 
-## Support slaves
+## Support slave types
 
 There are a few mechanisms to support slave.
 
@@ -72,14 +72,14 @@ Access to http://`address`:8880/ to execute jenkins.
 In order to work cluster well, ssh settings is important. ssh setting is difficult to understand and setup correctly.
 These Dockerfiles contains several commands to setup ssh and sshd.
 
-the stored key passphrase is "jenkins" in double quotes.
-
-### setup credential
+The key passphrase stored in ssh-files is "jenkins" in double quotes.
+ 
+### Setup credential
 
   To setup credential, register authentication information on jenkins.
   Use root's .ssh directory.
   
-### add slave using ssh agent
+### Add slave using ssh agent
 
   Add slave node with using ssh-credential from GUI menu as ssh slave node.
   
