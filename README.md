@@ -57,10 +57,10 @@ Access to http://`address`:8880/ to execute jenkins.
 
   Add slave node with using ssh-credential.
 
-## To build Jenkins slave node
+## To build Jenkins slave node (ssh)
 
 ```
-#> cd slave
+#> cd ssh-slave
 #> make
 (An image ci/slave will be registered.)
 ```
@@ -68,11 +68,11 @@ Access to http://`address`:8880/ to execute jenkins.
 ### And to run
 
 ```
-#> cd slave
+#> cd ssh-slave
 #> bash dockerrun.sh
 ```
 
-On slave node, sshd listens to your_host:11022 .  (11022->22)
+On ssh-slave node, sshd listens to your_host:11022 .  (11022->22)  port is specified in dockerurn.sh. so you can modify it easily.
 
 To connect between the master and the slave, you have to configure it manually 
 via Jenkins administration menu.
