@@ -28,7 +28,8 @@ This project forked from "https://github.com/knjname/jenkins-docker-example".
 The blog entry is http://knjname.hateblo.jp/entry/2014/05/03/190842 (In Japanese).
 
 I had to struggle to work it well. Because this omits permission settings to have
-master connect to slave via ssh. I hope this would help someone.
+master connect to slave via ssh. I wrote down every permission setting in this project.
+I hope this would help someone.
 
 
 
