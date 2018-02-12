@@ -1,0 +1,15 @@
+0.c	ok	0.1	ok	desc
+1.c	ok	0.1	ok	desc
+2.c	skip	0.0	s	desc
+b.c	error	0.2	oops	oops desc error
+c.c	error	0.2	oops	oops desc error
+d.c	error	0.2	oops	oops desc error
+e.c	error	0.2	oops	oops desc error
+f.c	fail	0.3	oops	oops desc fail
+g.c	fail	0.3	oops	oops desc fail
+h.c	fail	0.3	oops	oops desc fail
+i.c	fail	0.3	oops	oops desc fail
+j.c	fail	0.3	oops	oops desc fail
+k.c	fail	0.3	oops	oops desc fail
+n.c	fail	0.3	oops	oops desc fail
+
