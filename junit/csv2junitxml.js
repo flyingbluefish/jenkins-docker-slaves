@@ -83,7 +83,8 @@ function finish()
 	} else if (data.result == 'skip')  				     {
 	    t = sprintf('<skipped/>');
 	} else {
-	    return;
+	    i++;
+	    continue;
 	}
 	ss += t;
 	ss += '</testcase>';
