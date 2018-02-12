@@ -121,7 +121,9 @@ via Jenkins administration menu.
 
 ```
 #> cd ssh-slave
-#> bash dockerrun.sh
+#> bash dockerrun-01.sh
+#> bash dockerrun-02.sh
+#> bash dockerrun.sh node3 http://localhost:8880/computer/node3/slave-agent.jnlp 12122
 ```
 
 

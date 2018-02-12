@@ -1,18 +1,16 @@
 #!/bin/bash
 
 # change URL
-export NODEID=$1
-export URL=$2
-export PORT=$3
+export URL=http://192.168.116.207:8880/computer/1/slave-agent.jnlp
 
-SLAVEDIR=~/ci/slaves/$NODEID
-SLAVESSHPORT=$PORT
+SLAVEDIR=~/ci/slaves/2
+SLAVEPORT=12022
 
 mkdir -p $SLAVEDIR
 
 docker run \
     --name "ci-jnlp-slave" \
-    -p $SLAVESSHPORT:22 \
+    -p $SLAVEPORT:22 \
     -v $SLAVEDIR:/var/lib/jenkins \
     -e URL=$URL \
     -d \
