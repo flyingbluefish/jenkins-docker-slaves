@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuite name="" tests="14" errors="4" failures="7" time="3.0999999999999996">
+<testcase classname="" name="0.c" time="0.1"></testcase>
+<testcase classname="" name="1.c" time="0.1"></testcase>
+<testcase classname="" name="b.c" time="0.2"><error message="oops">oops desc error</error></testcase>
+<testcase classname="" name="c.c" time="0.2"><error message="oops">oops desc error</error></testcase>
+<testcase classname="" name="d.c" time="0.2"><error message="oops">oops desc error</error></testcase>
+<testcase classname="" name="e.c" time="0.2"><error message="oops">oops desc error</error></testcase>
+<testcase classname="" name="f.c" time="0.3"><failure message="oops">oops desc fail</failure></testcase>
+<testcase classname="" name="g.c" time="0.3"><failure message="oops">oops desc fail</failure></testcase>
+<testcase classname="" name="h.c" time="0.3"><failure message="oops">oops desc fail</failure></testcase>
+<testcase classname="" name="i.c" time="0.3"><failure message="oops">oops desc fail</failure></testcase>
+<testcase classname="" name="j.c" time="0.3"><failure message="oops">oops desc fail</failure></testcase>
+<testcase classname="" name="k.c" time="0.3"><failure message="oops">oops desc fail</failure></testcase>
+<testcase classname="" name="n.c" time="0.3"><failure message="oops">oops desc fail</failure></testcase>

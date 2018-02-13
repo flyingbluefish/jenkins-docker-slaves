@@ -17,6 +17,8 @@ RUN apt-get install -y openssh-server
 
 RUN apt-get install -y curl sudo unzip
 RUN apt-get install -y vim
+RUN curl -sL https://deb.nodesource.com/setup | bash -
+RUN apt-get install nodejs
 
 # get your packages
 RUN apt-get install -y build-essential gcc g++ unzip
@@ -32,8 +34,8 @@ RUN sed -i 's/#RSAAuthentication.*/RSAAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
 RUN sed -i 's/#SyslogFacility.*/SyslogFacility AUTH/' /etc/ssh/sshd_config
 RUN sed -i 's/SyslogFacility.*/SyslogFacility AUTHPRIV/' /etc/ssh/sshd_config
-RUN sed -i 's/#LogLevel.*/LogLevel INFO/' /etc/ssh/sshd_config
-RUN sed -i 's/LogLevel.*/LogLevel INFO/' /etc/ssh/sshd_config
+RUN sed -i 's/#LogLevel.*/LogLevel DEBUG3/' /etc/ssh/sshd_config
+RUN sed -i 's/LogLevel.*/LogLevel DEBUG3/' /etc/ssh/sshd_config
 RUN sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
 
 #EXPOSE 22
@@ -72,6 +74,8 @@ RUN chmod 0700 $JENKINS_HOME/.ssh
 # RUN usermod -G wheel jenkins
 
 ADD agent.jar $JENKINS_HOME/agent.jar
+ADD junit $JENKINS_HOME/junit
+RUN bash $JENKINS_HOME/junit/install.sh
 
 CMD    /usr/sbin/rsyslogd
 CMD    /usr/sbin/sshd -D

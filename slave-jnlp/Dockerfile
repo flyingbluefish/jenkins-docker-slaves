@@ -1,5 +1,8 @@
 FROM ubuntu
 
+ENV echo $URL
+
+
 ENV JENKINS_UID=1000
 ENV JENKINS_GID=1000
 ENV JENKINS_HOME=/home/jenkins
@@ -29,8 +32,8 @@ RUN sed -i 's/#RSAAuthentication.*/RSAAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
 RUN sed -i 's/#SyslogFacility.*/SyslogFacility AUTH/' /etc/ssh/sshd_config
 RUN sed -i 's/SyslogFacility.*/SyslogFacility AUTHPRIV/' /etc/ssh/sshd_config
-RUN sed -i 's/#LogLevel.*/LogLevel INFO/' /etc/ssh/sshd_config
-RUN sed -i 's/LogLevel.*/LogLevel INFO/' /etc/ssh/sshd_config
+RUN sed -i 's/#LogLevel.*/LogLevel DEBUG3/' /etc/ssh/sshd_config
+RUN sed -i 's/LogLevel.*/LogLevel DEBUG3/' /etc/ssh/sshd_config
 RUN sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
 
 #EXPOSE 22
@@ -68,8 +71,10 @@ RUN chmod 0700 $JENKINS_HOME/.ssh
 # RUN chown -R jenkins:jenkins $JENKINS_HOME
 # RUN usermod -G wheel jenkins
 
+ADD agent.jar $JENKINS_HOME/agent.jar
+
 CMD    /usr/sbin/rsyslogd
 CMD    /usr/sbin/sshd -D
-
+CMD    java -jar $JENKINS_HOME/agent.jar -jnlpUrl $URL -workDir $REMOTE_FSROOT
 
 
