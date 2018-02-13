@@ -15,7 +15,9 @@ if (process.argv.length < 3) {
 }
 
 var rs = null;
+var testname = "";
 try {
+    testname = process.argv[2];
     rs = fs.createReadStream(process.argv[2], 'utf-8');
     rs.on('error', function (err) {
 	console.error(err);
@@ -33,7 +35,7 @@ var datas = [];
 parser.on('data', function (line) {
 //    console.log(line);
 // testcasename\tresult\ttime\tmessage\tdescs
-    var o = {clz:line[0], name:line[1], time:line[3], result:line[2],message:line[4], desc:line[5]};
+    var o = {name:line[0], time:line[2], result:line[1],message:line[3], desc:line[4]};
 
     if (o.result == 'error') {
 	ecount++;
@@ -66,11 +68,11 @@ function finish()
 {
     console.log('<?xml version="1.0" ?>');
     var i = 0;
-    var n = sprintf('<testsuite name="" tests="%d" errors="%d" failures="%d" time="%g">', count, ecount, fcount, totaltime);
+    var n = sprintf('<testsuite name="%s" tests="%d" errors="%d" failures="%d" time="%g">', testname, count, ecount, fcount, totaltime);
     console.log(n);
     while (i < count) {
 	var data = datas[i];
-	var s = sprintf('<testcase classname="%s" name="%s" time="%s">', data.clz, data.name, data.time);
+	var s = sprintf('<testcase classname="" name="%s" time="%s">', data.name, data.time);
 	var t = '';
         var ss = '';
         ss += s;
