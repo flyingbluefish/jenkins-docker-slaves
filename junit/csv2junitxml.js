@@ -35,7 +35,7 @@ var datas = [];
 parser.on('data', function (line) {
 //    console.log(line);
 // testcasename\tresult\ttime\tmessage\tdescs
-    var o = {name:line[0], time:line[2], result:line[1],message:line[3], desc:line[4]};
+    var o = {clz:line[0], name:line[1], time:line[3], result:line[2],message:line[4], desc:line[5]};
 
     if (o.result == 'error') {
 	ecount++;
@@ -72,7 +72,7 @@ function finish()
     console.log(n);
     while (i < count) {
 	var data = datas[i];
-	var s = sprintf('<testcase classname="" name="%s" time="%s">', data.name, data.time);
+	var s = sprintf('<testcase classname="%s" name="%s" time="%s">', data.clz, data.name, data.time);
 	var t = '';
         var ss = '';
         ss += s;

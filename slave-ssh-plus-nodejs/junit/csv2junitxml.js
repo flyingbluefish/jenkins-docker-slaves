@@ -15,7 +15,9 @@ if (process.argv.length < 3) {
 }
 
 var rs = null;
+var testname = "";
 try {
+    testname = process.argv[2];
     rs = fs.createReadStream(process.argv[2], 'utf-8');
     rs.on('error', function (err) {
 	console.error(err);
@@ -66,7 +68,7 @@ function finish()
 {
     console.log('<?xml version="1.0" ?>');
     var i = 0;
-    var n = sprintf('<testsuite name="" tests="%d" errors="%d" failures="%d" time="%g">', count, ecount, fcount, totaltime);
+    var n = sprintf('<testsuite name="%s" tests="%d" errors="%d" failures="%d" time="%g">', testname, count, ecount, fcount, totaltime);
     console.log(n);
     while (i < count) {
 	var data = datas[i];
