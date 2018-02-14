@@ -23,6 +23,7 @@ docker run \
     --name "ci-jnlp-slave-"$NODEID \
     -p $SLAVESSHPORT:22 \
     -v $SLAVEDIR:/var/lib/jenkins \
+    -v /etc/localtime:/etc/localtime:ro \
     -e URL=$URL \
     -d \
     ci/jnlp-slave
