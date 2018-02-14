@@ -79,6 +79,7 @@ The key passphrase stored in ssh-files is "jenkins" in double quotes.
 
   To setup credential, register authentication information on jenkins.
   Use root's .ssh directory.
+  If not work, specify direct ssh private key on jenkins.
   
 ### Add slave using ssh agent
 
